@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Here</title>
+  <link rel="icon" href="./files/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #111;
+      transition: background 0.4s, color 0.4s;
+    }
+    .dark-mode {
+      background: #121212;
+      color: #e0e0e0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #222;
+      padding: 10px 30px;
+    }
+    .logo {
+      height: 50px;
+    }
+    .navbar li {
+      list-style: none;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .navbar a:hover {
+      color: #1e90ff;
+    }
+
+    /* Toggle Button Design */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 60px;
+      height: 30px;
+      background: #e0e0e0;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 0.4s;
+      z-index: 1000;
+    }
+    .theme-toggle.dark {
+      background: #444;
+    }
+    .theme-toggle i {
+      font-size: 20px;
+      color: #f39c12;
+      transition: transform 0.4s ease, color 0.4s;
+    }
+    .theme-toggle.dark i.bx-moon {
+      color: #f1c40f;
+      transform: translateX(26px);
+    }
+    .theme-toggle i.bx-sun {
+      color: #f39c12;
+    }
+
+    .registration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .register-form {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 700px;
+      width: 100%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      transition: background 0.4s, color 0.4s;
+    }
+    .dark-mode .register-form {
+      background: #1e1e1e;
+      color: #e0e0e0;
+    }
+    .register-form h1 {
+      text-align: center;
+      font-size: 32px;
+    }
+    .register-form span {
+      color: #1e90ff;
+    }
+    .register-form input[type="text"],
+    .register-form input[type="email"],
+    .register-form input[type="tel"],
+    .register-form input[type="number"],
+    .register-form input[type="datetime-local"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      background-color: #fdfdfd;
+    }
+    .dark-mode .register-form input {
+      background-color: #2c2c2c;
+      color: #fff;
+      border-color: #444;
+    }
+    .submitbtn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 18px;
+      background: #1e90ff;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .submitbtn:hover {
+      background: #0d6efd;
+    }
+    .footer {
+      background: #111;
+      color: white;
+      padding: 40px 20px 10px;
+      margin-top: 40px;
+    }
+    .dark-mode .footer {
+      background: #000;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footlinks h4 {
+      margin-bottom: 10px;
+    }
+    .footlinks ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    .footlinks ul li {
+      margin: 5px 0;
+    }
+    .footlinks ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footlinks ul li a:hover {
+      color: #1e90ff;
+    }
+    .social a {
+      font-size: 24px;
+      margin-right: 10px;
+      color: white;
+      transition: color 0.3s;
+    }
+    .social a:hover {
+      color: #1e90ff;
+    }
+    .end {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="register-body">
+
+  <!-- Toggle Button -->
+
+ <button class="theme-toggle" onclick="toggleDarkMode()" id="themeToggle">
+    <i class='bx bx-sun'></i>
+    <i class='bx bx-moon'></i>
+  </button>
+
+   <!-- Nav -->
+  <nav>
+    <img src="./files/logo.png" class="logo" alt="Logo" title="FirstFlight Travels">
+    <ul class="navbar">
+      <li>
+        <a href="/">Home</a>
+        <a href="/locations">Locations</a>
+        <a href="/package">Packages</a>
+        <a href="/about">About Us</a>
+        <a href="/contact">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Registration Form -->
+  <section class="registration">
+    <div class="register-form">
+      <h1>Register <span>Here</span></h1>
+      <form onsubmit="return validateform()">
+        <input type="text" name="myname1" placeholder="Name" required>
+        <input type="email" name="myemail" placeholder="Email-Id" required>
+        <input type="tel" name="myphone" placeholder="Phone No." id="phonenum" required>
+        <input type="number" name="myage" placeholder="Age" required>
+
+        <h4>Gender</h4>
+        <input type="radio" name="mygender" id="g-male" required><label for="g-male">Male</label>
+        <input type="radio" name="mygender" id="g-female"><label for="g-female">Female</label>
+
+        <h4>Departure</h4>
+        <input type="datetime-local" name="departuredate" required>
+
+        <h4>Return</h4>
+        <input type="datetime-local" name="returndate" required>
+
+        <h4>Travel Destination</h4>
+        <input type="checkbox" name="td" id="td1"><label for="td1">Kashmir</label>
+        <input type="checkbox" name="td" id="td2"><label for="td2">Istanbul</label>
+        <input type="checkbox" name="td" id="td3"><label for="td3">Paris</label>
+        <input type="checkbox" name="td" id="td4"><label for="td4">Bali</label>
+        <input type="checkbox" name="td" id="td5"><label for="td5">Dubai</label>
+        <input type="checkbox" name="td" id="td6"><label for="td6">Geneva</label>
+        <input type="checkbox" name="td" id="td7"><label for="td7">Port Blair</label>
+        <input type="checkbox" name="td" id="td8"><label for="td8">Rome</label>
+
+        <h4>Package</h4>
+        <input type="radio" name="locations" id="bronze" required><label for="bronze">Bronze</label>
+        <input type="radio" name="locations" id="silver"><label for="silver">Silver</label>
+        <input type="radio" name="locations" id="gold"><label for="gold">Gold</label>
+        <input type="radio" name="locations" id="platinum"><label for="platinum">Platinum</label>
+
+        <br><br>
+        <input type="checkbox" name="t&c" id="tnc" checked required>
+        <label for="tnc">I accept the Terms & Conditions.</label>
+
+        <br><br>
+        <input type="submit" value="Submit" class="submitbtn">
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="footer">
+    <div class="foot">
+      <div class="footer-content">
+        <div class="footlinks">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/index">home</a></li>
+            <li><a href="./about.html">About Us</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footlinks">
+          <h4>Connect</h4>
+          <div class="social">
+            <a href="https://facebook.com/mohd.rahil.blogger" target="_blank"><i class='bx bxl-facebook'></i></a>
+            <a href="https://instagram.com/mohdrahil101" target="_blank"><i class='bx bxl-instagram'></i></a>
+            <a href="https://twitter.com/mohdrahil101" target="_blank"><i class='bx bxl-twitter'></i></a>
+            <a href="https://linkedin.com/in/mohdrahil101" target="_blank"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://youtube.com/techdollarz" target="_blank"><i class='bx bxl-youtube'></i></a>
+            <a href="https://mohdrahil.wordpress.com" target="_blank"><i class='bx bxl-wordpress'></i></a>
+            <a href="https://github.com/mohdrahil101" target="_blank"><i class='bx bxl-github'></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="end">
+      <p>Copyright © 2022 Firstflight Travels All Rights Reserved.<br>Website developed by: Mohd. Rahil</p>
+    </div>
+  </section>
+
+  <script>
+    function validateform() {
+      const tel = document.getElementById("phonenum").value;
+      if (tel.length < 10) {
+        alert("Phone number must be at least 10 digits!");
+        return false;
+      } else if (isNaN(tel)) {
+        alert("Phone number should not include characters!");
+        return false;
+      }
+      return true;
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      document.getElementById("themeToggle").classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>

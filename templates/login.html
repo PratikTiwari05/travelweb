@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="transition duration-300">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GO-QUEST
+  </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: 0 },
+              '100%': { transform: 'translateY(0)', opacity: 1 },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 text-gray-800 dark:text-white transition-colors duration-300"
+      style="background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');">
+
+  <!-- Theme Toggle Button -->
+  <button onclick="toggleTheme()"
+    class="absolute top-5 right-5 px-4 py-2 text-sm rounded-lg font-semibold transition duration-300 shadow-md"
+    id="theme-toggle-btn">
+    <span id="toggle-text">Dark Mode</span>
+  </button>
+
+  <!-- Login Container -->
+  <div class="bg-white dark:bg-gray-800 bg-opacity-90 backdrop-blur-md shadow-2xl rounded-2xl p-8 w-full max-w-md animate-fade-in">
+
+    <div class="text-center mb-6">
+      <img src="https://via.placeholder.com/120x60?text=ExploreWorld" class="mx-auto mb-4" alt="GO-QUEST">
+      <h2 class="text-2xl font-bold">Welcome Back</h2>
+      <p class="text-sm text-gray-500 dark:text-gray-300">Login to continue your journey</p>
+    </div>
+
+    <form action="/login" method="POST" class="space-y-5 animate-slide-up">
+      <div>
+        <label for="email" class="block text-sm font-medium">Email Address</label>
+        <input id="email" name="email" type="email" required
+          class="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"/>
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium">Password</label>
+        <input id="password" name="password" type="password" required
+          class="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"/>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition duration-300">
+       <a href="/index/"> Login</a>
+      </button>
+
+      <div class="flex justify-between text-sm mt-3">
+        <a href="/admin" class="hover:underline">Admin Login</a>
+        <a href="/signup" class="hover:underline">Create account</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const toggleText = document.getElementById('toggle-text');
+      const button = document.getElementById('theme-toggle-btn');
+
+      const isDark = html.classList.contains('dark');
+      html.classList.toggle('dark');
+
+      if (isDark) {
+        // Going from dark -> light
+        toggleText.textContent = 'Dark Mode';
+        button.classList.remove('bg-gray-800', 'text-white');
+        button.classList.add('bg-white', 'text-gray-800');
+      } else {
+        // Going from light -> dark
+        toggleText.textContent = 'Light Mode';
+        button.classList.remove('bg-white', 'text-gray-800');
+        button.classList.add('bg-gray-800', 'text-white');
+      }
+    }
+  </script>
+</body>
+</html>
+
+
