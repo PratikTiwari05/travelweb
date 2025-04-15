@@ -2,7 +2,9 @@ from django.shortcuts import render,HttpResponse,redirect
 from home.models import Contact   
 from .forms import ContactForm
 from .models import Contact as ContactModel 
-from django.http import JsonResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate,login
+from django.contrib.auth import logout
 
 
   
@@ -10,8 +12,30 @@ from django.http import JsonResponse
 def index(request):
     return render(request, "index.html")
 
-def login(request):
+def loginuser(request):
+ 
+    if request.method =="POST":
+        username =request.POST.get('username')
+        password =request.POST.get('password')
+        user = authenticate(username=username, password=password)
+     
+        if user is not None:
+         print(username,password)
+         login(request,user)
+         return redirect("/index/")
+         
+        else:
+         return render(request, "login.html")
+    
     return render(request, "login.html")
+
+def logoutuser(request):
+    logout(request)
+    
+    return redirect("/")
+
+
+
 def about(request):
     return render(request, "about.html")
  
