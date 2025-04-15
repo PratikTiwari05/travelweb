@@ -1,11 +1,12 @@
-# from django import forms
-# from .models import TravelEnquiry
+from django import forms
+from .models import Contact
 
-# class TravelEnquiryForm(forms.ModelForm):
-#     class Meta:
-#         model = TravelEnquiry
-#         fields = '__all__'
-#         widgets = {
-#             'departure_date': forms.DateInput(attrs={'type': 'date'}),
-#             'return_date': forms.DateInput(attrs={'type': 'date'}),
-#         }
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['name', 'email', 'subject']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Your Name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Your Email'}),
+            'subject': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Your Message'}),
+        }

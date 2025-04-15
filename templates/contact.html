@@ -120,7 +120,7 @@
 
   <!-- Navigation -->
   <nav>
-    <img src="./files/logo.png" class="logo" alt="Logo" title="FirstFlight Travels" />
+    <img src="./files/logo.png" class="logo" alt="Logo" title="GO Quest" />
     <ul class="navbar d-flex">
       <li>
         <a href="/index/">Home</a>
@@ -138,12 +138,13 @@
       <div class="card shadow-lg p-4">
         <h2 class="text-center mb-3">Contact <span class="text-primary">Us</span></h2>
         <p class="text-center mb-4">We are always out there to help you! Fill out the form given below and get a reply from us within 2 business days.</p>
-        <form>
+        <form method="POST" action="/contact">
+         {% csrf_token %}
           <div class="mb-3">
-            <input type="text" class="form-control" name="myname" placeholder="Your Name" required />
+            <input type="text" class="form-control" name="name" placeholder="Enter Your Name" required />
           </div>
           <div class="mb-3">
-            <input type="email" class="form-control" name="email" placeholder="Your E-mail" required />
+            <input type="email" class="form-control" name="email" placeholder="Enter Your E-mail" required />
           </div>
           <div class="mb-3">
             <input type="text" class="form-control" name="subject" placeholder="What brings you here?" required />
@@ -179,8 +180,7 @@
         </div>
       </div>
       <div class="text-center mt-4">
-        <p>Copyright © 2022 Firstflight Travels. All Rights Reserved.<br>
-        Website developed by: Mohd. Rahil</p>
+       
       </div>
     </div>
   </section>
